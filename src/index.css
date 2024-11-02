@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-black: #000000;
+    --primary-green: #446831;
+    --accent-green: #5F903A;
+    --primary-orange: #F48122;
+    --warm-orange: #F8AB2B;
+    --primary-yellow: #F8D530;
+    --bg-light-yellow: #FBF9CE;
+    --bg-off-white: #FCF9E5;
+  }
+
+  body {
+    @apply antialiased bg-[var(--bg-off-white)];
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes progress {
+  0% { width: 0; }
+  50% { width: 66.666667%; }
+  100% { width: 66.666667%; }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--primary-green)] text-[var(--bg-off-white)] hover:bg-[var(--accent-green)] transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-[var(--primary-orange)] text-[var(--bg-off-white)] hover:bg-[var(--warm-orange)] transition-colors;
+  }
+
+  .input-field {
+    @apply bg-[var(--bg-off-white)] border border-[var(--primary-green)] focus:border-[var(--accent-green)] focus:ring-[var(--accent-green)];
+  }
+
+  .hotspot {
+    @apply absolute w-4 h-4 rounded-full bg-[var(--primary-orange)] animate-pulse cursor-pointer
+           hover:scale-110 hover:bg-[var(--warm-orange)] transition-all duration-300;
+  }
+
+  .search-input {
+    @apply w-full px-4 py-2 bg-[var(--bg-off-white)] border border-[var(--primary-green)]
+           focus:border-[var(--primary-orange)] focus:ring-2 focus:ring-[var(--primary-orange)]/20
+           rounded-lg transition-all duration-300;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+  }
+
+  .modal-content {
+    @apply bg-[var(--bg-off-white)] rounded-xl shadow-xl max-w-lg w-full mx-4 p-6;
+  }
+}
